@@ -1,6 +1,7 @@
 import 'package:aplikasi_presensi/components/progress_dialog.dart';
 import 'package:aplikasi_presensi/models/login_response_model.dart';
 import 'package:aplikasi_presensi/screens/home_screen.dart';
+import 'package:aplikasi_presensi/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as myHttp;
@@ -46,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if(tokenStr != "" && nameStr != ""){
       Future.delayed(Duration(seconds: 1), () async {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (c)=> const HomeScreen()))
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (c)=> const HomeScreen()))
             .then((value) {
           setState(() {
 
@@ -99,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
       final SharedPreferences pref = await _prefs;
       pref.setString("name", name);
       pref.setString("token", token);
-      Navigator.of(context).push(MaterialPageRoute(builder: (c)=> const HomeScreen()))
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (c)=> const HomeScreen()))
           .then((value) {
         setState(() {
 
@@ -262,10 +263,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               TextButton(
                   onPressed: (){
-
+                    Navigator.push(context, MaterialPageRoute(builder: (c)=> const RegisterScreen()));
                   },
                   child: const Text(
-                    "Belum Pernah Aplikasinya ? Daftar Dong!",
+                    "Belum Pernah Pakai Aplikasinya ? Daftar Dong!",
                     style: TextStyle(
                         color: Colors.grey
                     ),

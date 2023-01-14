@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.remove('name');
       prefs.remove('token');
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (c)=> const LoginScreen()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (c)=> const LoginScreen()));
     }
   }
 
